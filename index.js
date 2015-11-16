@@ -1,8 +1,16 @@
-var gameServer = require('GameService')({name:'GameServer',port:8888});
+"use strict";
+let gameConnect = require('zeeman-game-connect');
+let server = gameConnect.createServer({port:1978});
 
+server.on('run', function(client, msg) {
+	//console.log(client.name);
+	//console.log(msg);
+});
 
-gameServer.connectServer({name:'DataServer',host:'localhost',port:9988});
+server.on('clientConnect', function(client) {
+	console.log(client.name + ' connected ...');
+});
 
-gameServer.connectServer({name:'ConfigServer',host:'localhost',port:3355});
-
-gameServer.connectServer({name:'AdminServer',host:'localhost',port:1234});
+server.on('clientDisconnect', function(client) {
+	console.log(client.name + ' disconnected ...');
+});
