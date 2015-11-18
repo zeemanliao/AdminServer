@@ -3,8 +3,8 @@ let gameConnect = require('zeeman-game-connect');
 let server = gameConnect.createServer({port:1978});
 
 server.on('run', function(client, msg) {
-	//console.log(client.name);
-	//console.log(msg);
+	console.log(client.name);
+	console.log(msg);
 });
 
 server.on('clientConnect', function(client) {
